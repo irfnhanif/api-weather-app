@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WeatherActivity">
+    tools:context=".VolleyWeatherActivity">
 
     <ImageView
         android:id="@+id/iv_weather7"
@@ -253,7 +253,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_condition" />
 
     <TextView
-        android:id="@+id/tv_city"
+        android:id="@+id/tv_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="148dp"
@@ -281,10 +281,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Coordinate"
-        app:layout_constraintEnd_toEndOf="@+id/tv_city"
+        app:layout_constraintEnd_toEndOf="@+id/tv_location"
         app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="@+id/tv_city"
-        app:layout_constraintTop_toBottomOf="@+id/tv_city" />
+        app:layout_constraintStart_toStartOf="@+id/tv_location"
+        app:layout_constraintTop_toBottomOf="@+id/tv_location" />
 
     <ImageView
         android:id="@+id/iv_weather1"
