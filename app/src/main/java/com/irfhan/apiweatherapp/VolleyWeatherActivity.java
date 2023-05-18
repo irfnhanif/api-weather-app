@@ -11,6 +11,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +20,7 @@ public class VolleyWeatherActivity extends AppCompatActivity implements Response
 
     private TextView tvCondition, tvWindSpeed, tvTemperature, tvLocation, tvCoordinate;
     private ImageView ivWeatherIcon;
+    private RequestQueue requestQueue;
 
     private String url = "https://api.open-meteo.com/v1/forecast?latitude=-7.98&longitude=112.63&daily=weathercode&current_weather=true&timezone=auto";
 
@@ -32,8 +34,13 @@ public class VolleyWeatherActivity extends AppCompatActivity implements Response
         tvTemperature = findViewById(R.id.tv_temperature);
         tvLocation = findViewById(R.id.tv_location);
         tvCondition = findViewById(R.id.tv_condition);
+        tvCoordinate = findViewById(R.id.tv_coordinate);
+        ivWeatherIcon = findViewById(R.id.iv_weather_icon);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, this, this);
+
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonObjectRequest);
     }
 
     @Override
@@ -44,14 +51,17 @@ public class VolleyWeatherActivity extends AppCompatActivity implements Response
             JSONObject currentWeather = response.getJSONObject("current_weather");
             String temperature = currentWeather.getString("temperature");
             String windSpeed = currentWeather.getString("windspeed");
-            int weatherCode = currentWeather.getInt("weathercode");
+            String weatherCodeString = currentWeather.getString("weathercode");
+
+            int weatherCode = Integer.parseInt(weatherCodeString);
+            String coordinate = longitude + ", " + latitude;
 
             tvCondition.setText(getConditionText(weatherCode));
             ivWeatherIcon.setImageResource(getWeatherIconResource(weatherCode));
             tvWindSpeed.setText(windSpeed);
             tvTemperature.setText(temperature);
             tvLocation.setText("Malang, East Java");
-            tvCoordinate.setText(longitude + ", " + latitude);
+            tvCoordinate.setText(coordinate);
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
