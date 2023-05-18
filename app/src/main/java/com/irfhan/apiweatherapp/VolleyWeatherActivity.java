@@ -46,11 +46,12 @@ public class VolleyWeatherActivity extends AppCompatActivity implements Response
             String windSpeed = currentWeather.getString("windspeed");
             int weatherCode = currentWeather.getInt("weathercode");
 
-            switch (weatherCode) {
-                case 0:
-                    tvCondition.setText("Clear sky");
-
-            }
+            tvCondition.setText(getConditionText(weatherCode));
+            ivWeatherIcon.setImageResource(getWeatherIconResource(weatherCode));
+            tvWindSpeed.setText(windSpeed);
+            tvTemperature.setText(temperature);
+            tvLocation.setText("Malang, East Java");
+            tvCoordinate.setText(longitude + ", " + latitude);
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
@@ -60,4 +61,75 @@ public class VolleyWeatherActivity extends AppCompatActivity implements Response
     public void onErrorResponse(VolleyError error) {
 
     }
+
+    private String getConditionText(int weatherCode) {
+        switch (weatherCode) {
+            case 0:
+                return "Clear sky";
+            case 1:
+                return "Mainly Clear";
+            case 2:
+                return "Partly Cloudy";
+            case 3:
+                return "Overcast";
+            case 45:
+                return "Fog";
+            case 48:
+                return "Depositing Rime Fog";
+            case 51:
+                return "Drizzle: Light";
+            case 53:
+                return "Drizzle: Moderate";
+            case 55:
+                return "Drizzle: Heavy";
+            case 61:
+                return "Rain: Slight";
+            case 63:
+                return "Rain: Moderate";
+            case 65:
+                return "Rain: Heavy";
+            case 80:
+                return "Rain Showers: Slight";
+            case 81:
+                return "Rain Showers: Moderate";
+            case 82:
+                return "Rain Showers: Heavy";
+            case 95:
+                return "Thunderstorm";
+            default:
+                return "Unknown";
+        }
+    }
+
+
+    private int getWeatherIconResource(int weatherCode) {
+        switch (weatherCode) {
+            case 0:
+                return R.drawable.sun;
+            case 1:
+            case 2:
+            case 3:
+                return R.drawable.partly_cloudy_day;
+            case 45:
+            case 48:
+                return R.drawable.fog;
+            case 51:
+            case 53:
+            case 55:
+                return R.drawable.light_rain;
+            case 61:
+            case 63:
+            case 65:
+                return R.drawable.rain;
+            case 80:
+            case 81:
+            case 82:
+                return R.drawable.rainy_weather;
+            case 95:
+                return R.drawable.storm;
+            default:
+                return R.drawable.unknown_icon;
+        }
+    }
+
 }
