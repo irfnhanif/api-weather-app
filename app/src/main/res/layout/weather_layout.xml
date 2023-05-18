@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/iv_weather6"
-        app:layout_constraintTop_toBottomOf="@+id/tv_date2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_date3"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toStartOf="@+id/iv_weather6"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/iv_weather4"
-        app:layout_constraintTop_toBottomOf="@+id/tv_date3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_date2"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -73,7 +73,7 @@
         app:layout_constraintEnd_toStartOf="@+id/iv_weather7"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/iv_weather5"
-        app:layout_constraintTop_toBottomOf="@+id/tv_date3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_date2"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -114,14 +114,14 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tv_date3"
+        android:id="@+id/tv_date2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="2023-05-21"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_date2"
+        app:layout_constraintEnd_toStartOf="@+id/tv_date3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_date1"
         app:layout_constraintTop_toBottomOf="@+id/iv_weather2" />
@@ -134,13 +134,13 @@
         android:text="2023-05-21"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_date3"
+        app:layout_constraintEnd_toStartOf="@+id/tv_date2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_weather1" />
 
     <TextView
-        android:id="@+id/tv_date2"
+        android:id="@+id/tv_date3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -149,7 +149,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_date3"
+        app:layout_constraintStart_toEndOf="@+id/tv_date2"
         app:layout_constraintTop_toBottomOf="@+id/iv_weather3" />
 
     <ImageView
