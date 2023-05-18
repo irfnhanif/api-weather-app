@@ -17,6 +17,9 @@
             android:name=".VolleyWeatherActivity"
             android:exported="false" />
         <activity
+            android:name=".RetrofitWeatherActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
