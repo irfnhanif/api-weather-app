@@ -78,7 +78,7 @@ public class VolleyWeatherActivity extends AppCompatActivity implements Response
 
 
             int weatherCode = Integer.parseInt(weatherCodeString);
-            String coordinate = longitude + ", " + latitude;
+            String coordinate = latitude + ", " + longitude;
 
             tvCondition.setText(getConditionText(weatherCode));
             ivWeatherIcon.setImageResource(getWeatherIconResource(weatherCode));

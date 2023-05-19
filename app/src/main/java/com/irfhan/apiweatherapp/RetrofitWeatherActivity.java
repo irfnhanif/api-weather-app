@@ -71,7 +71,7 @@ public class RetrofitWeatherActivity extends AppCompatActivity {
             String weatherCodeString = weatherList.currentWeather.weathercode;
 
             int weatherCode = Integer.parseInt(weatherCodeString);
-            String coordinate = longitude + ", " + latitude;
+            String coordinate = latitude + ", " + longitude;
 
             tvCondition.setText(getConditionText(weatherCode));
             ivWeatherIcon.setImageResource(getWeatherIconResource(weatherCode));
