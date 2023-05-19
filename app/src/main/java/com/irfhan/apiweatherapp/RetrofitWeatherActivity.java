@@ -57,58 +57,56 @@ public class RetrofitWeatherActivity extends AppCompatActivity {
     }
 
     private void getWeatherData() {
-        Call<List< RetrofitModel >> call = RetrofitClient.getInstance()
+        Call<RetrofitModel> call = RetrofitClient.getInstance()
                 .getRetrofitApi().getWeatherData();
-        call.enqueue(new Callback< List < RetrofitModel >>() {
+        call.enqueue(new Callback<RetrofitModel>() {
             @Override
-            public void onResponse(Call<List<RetrofitModel>> call, Response<List<RetrofitModel>> response) {
-                List < RetrofitModel > weatherList = response.body();
+            public void onResponse(Call<RetrofitModel> call, Response<RetrofitModel> response) {
+            RetrofitModel weatherList = response.body();
 
-                for (int i = 0; i < weatherList.size(); i++) {
-                    String longitude = weatherList.get(i).longitude;
-                    String latitude = weatherList.get(i).latitude;
-                    String temperature = weatherList.get(i).currentWeather.temperature;
-                    String windSpeed = weatherList.get(i).currentWeather.windspeed;
-                    String weatherCodeString = weatherList.get(i).currentWeather.weathercode;
+            String longitude = weatherList.longitude;
+            String latitude = weatherList.latitude;
+            String temperature = weatherList.currentWeather.temperature;
+            String windSpeed = weatherList.currentWeather.windspeed;
+            String weatherCodeString = weatherList.currentWeather.weathercode;
 
-                    int weatherCode = Integer.parseInt(weatherCodeString);
-                    String coordinate = longitude + ", " + latitude;
+            int weatherCode = Integer.parseInt(weatherCodeString);
+            String coordinate = longitude + ", " + latitude;
 
-                    tvCondition.setText(getConditionText(weatherCode));
-                    ivWeatherIcon.setImageResource(getWeatherIconResource(weatherCode));
-                    tvWindSpeed.setText(windSpeed);
-                    tvTemperature.setText(temperature);
-                    tvLocation.setText("Malang, East Java");
-                    tvCoordinate.setText(coordinate);
+            tvCondition.setText(getConditionText(weatherCode));
+            ivWeatherIcon.setImageResource(getWeatherIconResource(weatherCode));
+            tvWindSpeed.setText(windSpeed);
+            tvTemperature.setText(temperature);
+            tvLocation.setText("Malang, East Java");
+            tvCoordinate.setText(coordinate);
 
-                    List<String> timeArray = weatherList.get(i).daily.time;
-                    List<String> weatherCodesStringArray = weatherList.get(i).daily.weathercode;
-                    List<Integer> weatherCodesIntegerArray = new ArrayList<>();
+            List<String> timeArray = weatherList.daily.time;
+            List<String> weatherCodesStringArray = weatherList.daily.weathercode;
+            List<Integer> weatherCodesIntegerArray = new ArrayList<>();
 
-                    for (int j = 0; j < weatherCodesStringArray.size(); j++) {
-                        weatherCodesIntegerArray.add(Integer.parseInt(weatherCodesStringArray.get(j)));
-                    }
+            for (int j = 0; j < weatherCodesStringArray.size(); j++) {
+                weatherCodesIntegerArray.add(Integer.parseInt(weatherCodesStringArray.get(j)));
+            }
 
-                    ivWeatherDate1.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(0)));
-                    ivWeatherDate2.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(1)));
-                    ivWeatherDate3.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(2)));
-                    ivWeatherDate4.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(3)));
-                    ivWeatherDate5.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(4)));
-                    ivWeatherDate6.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(5)));
-                    ivWeatherDate7.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(6)));
+            ivWeatherDate1.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(0)));
+            ivWeatherDate2.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(1)));
+            ivWeatherDate3.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(2)));
+            ivWeatherDate4.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(3)));
+            ivWeatherDate5.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(4)));
+            ivWeatherDate6.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(5)));
+            ivWeatherDate7.setImageResource(getWeatherIconResource(weatherCodesIntegerArray.get(6)));
 
-                    tvDate1.setText(timeArray.get(0));
-                    tvDate2.setText(timeArray.get(1));
-                    tvDate3.setText(timeArray.get(2));
-                    tvDate4.setText(timeArray.get(3));
-                    tvDate5.setText(timeArray.get(4));
-                    tvDate6.setText(timeArray.get(5));
-                    tvDate7.setText(timeArray.get(6));
-                }
+            tvDate1.setText(timeArray.get(0));
+            tvDate2.setText(timeArray.get(1));
+            tvDate3.setText(timeArray.get(2));
+            tvDate4.setText(timeArray.get(3));
+            tvDate5.setText(timeArray.get(4));
+            tvDate6.setText(timeArray.get(5));
+            tvDate7.setText(timeArray.get(6));
             }
 
             @Override
-            public void onFailure(Call<List<RetrofitModel>> call, Throwable t) {
+            public void onFailure(Call<RetrofitModel> call, Throwable t) {
 
             }
         });
